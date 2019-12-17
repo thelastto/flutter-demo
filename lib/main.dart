@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/route.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +23,16 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      //注册路由表
+      routes: {
+        "new_page": (context) => NewRoute(), //注册首页路由
+        "/":(context) => MyHomePage(title: 'Flutter Demo Home Page'), //注册首页路由
+        "tip2": (context){
+          return TipRoute(text: ModalRoute.of(context).settings.arguments);
+        },
+      } ,
+      //当调用Navigator.pushNamed(...)打开命名路由时，如果指定的路由名在路由表中已注册，则会调用路由表中的builder函数来生成路由组件；如果路由表中没有注册，才会调用onGenerateRoute来生成路由
+      // home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -98,6 +110,23 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            FlatButton(
+              child: Text("open new route"),
+              textColor: Colors.blue,
+              onPressed: () {
+                //导航到新路由   
+                Navigator.pushNamed(context, "new_page", arguments: "hi");
+                // Navigator.push(
+                //   context, 
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return NewRoute();
+                //     }
+                //   )
+                // );
+              },
+            ),
+            RouterTestRoute(),
           ],
         ),
       ),
