@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/image.dart';
+import 'package:flutter_demo/randomWords.dart';
 import 'package:flutter_demo/route.dart';
 
 void main() => runApp(MyApp());
@@ -103,6 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ImageBox(
+              path: "images/fighting.png"
+            ),
             Text(
               'You have pushed the button this many times:',
             ),
@@ -126,6 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 // );
               },
             ),
+            RandomWordsWidget(),
             RouterTestRoute(),
           ],
         ),
