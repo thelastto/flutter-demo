@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/image.dart';
-import 'package:flutter_demo/randomWords.dart';
+import 'package:flutter_demo/public_widgets/RouteButton.dart';
+import 'package:flutter_demo/public_widgets/Section.dart';
 import 'package:flutter_demo/route.dart';
-import 'package:flutter_demo/state.dart';
+import 'package:flutter_demo/simple_widgets/button.dart';
+import 'package:flutter_demo/simple_widgets/image.dart';
+import 'package:flutter_demo/simple_widgets/state.dart';
+import 'package:flutter_demo/simple_widgets/text.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,6 +34,11 @@ class MyApp extends StatelessWidget {
         "tip2": (context){
           return TipRoute(text: ModalRoute.of(context).settings.arguments);
         },
+        "text": (context) => TextWidget(),
+        "state": (context) => StateWidget(),
+        "button": (context) => ButtonWidget(),
+        "image": (context) => ImageWidget(),
+        "icon": (context) => IconWidget(),
       } ,
       //当调用Navigator.pushNamed(...)打开命名路由时，如果指定的路由名在路由表中已注册，则会调用路由表中的builder函数来生成路由组件；如果路由表中没有注册，才会调用onGenerateRoute来生成路由
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -84,64 +92,43 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: Padding(
+        padding: EdgeInsets.all(24.0),
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TapboxA(),
-            ParentWidgetC(),
-            ImageBox(
-              path: "images/fighting.png"
-            ),
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            FlatButton(
-              child: Text("open new route"),
-              textColor: Colors.blue,
-              onPressed: () {
-                //导航到新路由   
-                Navigator.pushNamed(context, "new_page", arguments: "hi");
-                // Navigator.push(
-                //   context, 
-                //   MaterialPageRoute(
-                //     builder: (context) {
-                //       return NewRoute();
-                //     }
-                //   )
-                // );
-              },
-            ),
-            RandomWordsWidget(),
-            RouterTestRoute(),
+            Section(
+              title: "基础组件",
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    RouteButton(
+                      text: "文本",
+                      name: "text"
+                      ),
+                    RouteButton(
+                      text: "状态管理",
+                      name: "state",
+                    ),
+                    RouteButton(
+                      text: '按钮',
+                      name: 'button'
+                    ),
+                    RouteButton(
+                      text: '图片',
+                      name: 'image'
+                    ),
+                    RouteButton(
+                      text: '图标',
+                      name: 'icon'
+                    )
+                  ],
+                )
+                
+              ],
+            )
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        )
+      )
     );
   }
 

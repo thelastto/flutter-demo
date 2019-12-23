@@ -1,25 +1,8 @@
 import 'package:flutter/material.dart';
 
-class SimpleWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("基础组件"),
-      ),
-      body: Column(
-          children: <Widget>[
-        
-          ],
-        )
-      );
-  }
-}
-
 class Section extends StatelessWidget {
-
   const Section({Key key, this.title, this.children}) : super(key: key);
-  
+
   final String title;
   final List<Widget> children;
 
@@ -28,7 +11,13 @@ class Section extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
-
+          Text(
+            "$title",
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+          ),
+          Column(
+            children: children,
+          )
         ],
       ),
     );

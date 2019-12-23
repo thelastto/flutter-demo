@@ -221,3 +221,21 @@ class _TapboxCState extends State<TapboxC> {
 }
 
 // 全局状态管理
+
+class StateWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("状态管理"),
+      ),
+      body: Column(
+          children: <Widget>[
+            TapboxA(),
+            ParentWidget(),
+            TapboxC(onChanged: (bool value) {},)
+          ],
+        )
+      );
+  }
+}
