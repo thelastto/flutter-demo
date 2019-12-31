@@ -3,6 +3,7 @@ import 'package:flutter_demo/public_widgets/RouteButton.dart';
 import 'package:flutter_demo/public_widgets/Section.dart';
 import 'package:flutter_demo/route.dart';
 import 'package:flutter_demo/simple_widgets/button.dart';
+import 'package:flutter_demo/simple_widgets/form.dart';
 import 'package:flutter_demo/simple_widgets/image.dart';
 import 'package:flutter_demo/simple_widgets/input.dart';
 import 'package:flutter_demo/simple_widgets/state.dart';
@@ -40,7 +41,8 @@ class MyApp extends StatelessWidget {
         "button": (context) => ButtonWidget(),
         "image": (context) => ImageWidget(),
         "icon": (context) => IconWidget(),
-        "input": (context) => FormExampletRoute()
+        "input": (context) => InputRoute(),
+        'form': (context) => FormTestRoute(),
       } ,
       //当调用Navigator.pushNamed(...)打开命名路由时，如果指定的路由名在路由表中已注册，则会调用路由表中的builder函数来生成路由组件；如果路由表中没有注册，才会调用onGenerateRoute来生成路由
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -124,8 +126,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       name: 'icon'
                     ),
                     RouteButton(
-                      text: '输入框及表单',
+                      text: '输入框',
                       name: 'input'
+                    ),
+                    RouteButton(
+                      text: '表单',
+                      name: 'form'
                     )
                   ],
                 )

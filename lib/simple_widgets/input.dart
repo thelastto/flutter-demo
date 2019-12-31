@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/public_widgets/Wrapper.dart';
 
-class FormExampletRoute extends StatefulWidget {
+class InputRoute extends StatefulWidget {
   @override
-  _FormExampletRoute createState() => new _FormExampletRoute();
+  _InputRoute createState() => new _InputRoute();
 }
 
-class _FormExampletRoute extends State<FormExampletRoute> {
+class _InputRoute extends State<InputRoute> {
   TextEditingController _usernameController = TextEditingController();
   FocusNode focusNode1 = new FocusNode();
   FocusNode focusNode2 = new FocusNode();
@@ -23,7 +23,7 @@ class _FormExampletRoute extends State<FormExampletRoute> {
   @override
   Widget build(BuildContext context) {
     return Wrapper(
-      title: '输入框及表单',
+      title: '输入框',
       child: Column(
         children: <Widget>[
           TextField(
